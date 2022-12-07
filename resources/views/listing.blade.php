@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('content')
+@include('partials._search')
 
 <a href="/">Back</a>
 
