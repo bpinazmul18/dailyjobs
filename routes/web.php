@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Listings
-Route::get('/listings', [ListingController::class, 'index']);
-Route::get('/listings/{listing}', [ListingController::class, 'show']);
+Route::get('/', [ListingController::class, 'index']);
+Route::get('/{listing}', [ListingController::class, 'show']);
 
 Route::get('/posts/{id}', function ($id) {
     return response('Posts' . $id);
