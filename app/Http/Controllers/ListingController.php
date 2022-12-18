@@ -41,10 +41,9 @@ class ListingController extends Controller
             'tags' => 'required',
             'description' => 'required'
         ]);
-        
-        // return dd($request->all());
-        // dd($validateData);
 
+        Listing::create($validateData);
+        
         return redirect('/');
     }
 }
