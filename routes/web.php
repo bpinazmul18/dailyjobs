@@ -1,8 +1,6 @@
 <?php
 
 use App\Http\Controllers\ListingController;
-use App\Models\Listing;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,12 +16,5 @@ use Illuminate\Support\Facades\Route;
 
 // Listings
 Route::get('/', [ListingController::class, 'index']);
+Route::get('/create', [ListingController::class, 'create']);
 Route::get('/{listing}', [ListingController::class, 'show']);
-
-Route::get('/posts/{id}', function ($id) {
-    return response('Posts' . $id);
-})->where('id', '[0-9]+');
-
-Route::get('/search', function (Request $request) {
-    return ($request->name . ' ' . $request->city);
- });
