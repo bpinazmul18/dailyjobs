@@ -8,7 +8,7 @@
             <p class="mb-4">Create an account to post gigs</p>
         </header>
 
-        <form action="">
+        <form method="POST" action="/users">
             <div class="mb-6">
                 <label for="name" class="inline-block text-lg mb-2">
                     Name
