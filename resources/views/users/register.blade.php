@@ -1,6 +1,6 @@
 <x-layout>
 
-    <div class="bg-gray-50 border border-gray-200 p-10 rounded max-w-lg mx-auto mt-24">
+    <x-card class="p-10 max-w-lg mx-auto mt-24">
         <header class="text-center">
             <h2 class="text-2xl font-bold uppercase mb-1">
                 Register
@@ -52,5 +52,5 @@
                 </p>
             </div>
         </form>
-    </div>
+    </x-card>
 </x-layout>
