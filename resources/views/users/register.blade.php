@@ -1,5 +1,4 @@
 <x-layout>
-
     <x-card class="p-10 max-w-lg mx-auto mt-24">
         <header class="text-center">
             <h2 class="text-2xl font-bold uppercase mb-1">
@@ -8,7 +7,7 @@
             <p class="mb-4">Create an account to post gigs</p>
         </header>
 
-        <form method="POST" action="/users">
+        <form method="POST" action="/users/store">
             @csrf
             <div class="mb-6">
                 <label for="name" class="inline-block text-lg mb-2">
