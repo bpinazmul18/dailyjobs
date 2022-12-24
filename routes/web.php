@@ -17,21 +17,13 @@ use App\Http\Controllers\ListingController;
 
 // Listings
 Route::get('/', [ListingController::class, 'index']);
-Route::get('/listings/create', [ListingController::class, 'create']);
-Route::post('/listings/store', [ListingController::class, 'store']);
-Route::get('/{listing}', [ListingController::class, 'show']);
+Route::get('/listings/create', [ListingController::class, 'create'])->middleware('auth');
+Route::post('/listings/store', [ListingController::class, 'store'])->middleware('auth');
+Route::get('/{listing}', [ListingController::class, 'show'])->middleware('auth');
 
 // Users
-Route::get('/users/register', [UserController::class, 'create']);
-
-// Create new user
+Route::get('/users/register', [UserController::class, 'create'])->middleware('guest');
 Route::post('/users/store', [UserController::class, 'store']);
-
-// Logout
-Route::post('/logout', [UserController::class, 'logout']);
-
-// Show Login form
-Route::get('/users/login', [UserController::class, 'login']);
-
-// Login user
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
+Route::get('/users/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/users/auth', [UserController::class, 'auth']);
