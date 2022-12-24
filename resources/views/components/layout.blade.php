@@ -37,6 +37,16 @@
                     Manage Our Listing</a>
             </li>
 
+            <li>
+                <form class="inline" method="POST" action="/logout">
+                    @csrf
+                    <button type="submit">
+                        <i class="fa-solid fa-door-closed"></i>
+                        Logout
+                    </button>
+                </form>
+            </li>
+
             @else
             <li>
                 <a href="/users/register" class="hover:text-laravel"><i class="fa-solid fa-user-plus"></i> Register</a>
