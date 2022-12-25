@@ -42,6 +42,9 @@ class ListingController extends Controller
             'description' => 'required'
         ]);
 
+
+        $validateData['user_id'] = auth()->id();
+
         Listing::create($validateData);
         
         return redirect('/')->with('message', 'Listing created successfully.');
