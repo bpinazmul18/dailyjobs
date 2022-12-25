@@ -68,31 +68,42 @@ class ListingController extends Controller
         ]);
     }
 
-        // Update listing data
-        public function update(Request $request, Listing $listing) {
-            if ($listing->user_id != auth()->id()) {
-                abort(403, 'Unauthorized action!');
-            }
-
-            $validateData = $request->validate([
-                'company' => ['required'],
-                'title' => 'required',
-                'location'=> 'required',
-                'email' => [ 'required', 'email'],
-                'website'=> 'required',
-                'tags' => 'required',
-                'description' => 'required'
-            ]);
-    
-            if ($request->hasFile('logo')) {
-                $validateData['logo'] = $request->file('logo')->store('logos', 'public');
-            }
-    
-    
-            $validateData['user_id'] = auth()->id();
-    
-            $listing->update($validateData);
-            
-            return redirect('/')->with('message', 'Listing Updated successfully.');
+    // Update listing data
+    public function update(Request $request, Listing $listing) {
+        if ($listing->user_id != auth()->id()) {
+            abort(403, 'Unauthorized action!');
         }
+
+        $validateData = $request->validate([
+            'company' => ['required'],
+            'title' => 'required',
+            'location'=> 'required',
+            'email' => [ 'required', 'email'],
+            'website'=> 'required',
+            'tags' => 'required',
+            'description' => 'required'
+        ]);
+
+        if ($request->hasFile('logo')) {
+            $validateData['logo'] = $request->file('logo')->store('logos', 'public');
+        }
+
+
+        $validateData['user_id'] = auth()->id();
+
+        $listing->update($validateData);
+        
+        return redirect('/')->with('message', 'Listing Updated successfully.');
+    }
+
+    // Delete listing
+    public function destroy (Listing $listing) {
+        if ($listing->user_id != auth()->id()) {
+            abort(403, 'Unauthorized action!');
+        }
+
+        $listing->delete();
+
+        return redirect('/')->with('message', 'Listing deleted successfully');
+    }
 }
