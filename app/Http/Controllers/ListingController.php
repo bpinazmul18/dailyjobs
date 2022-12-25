@@ -42,6 +42,10 @@ class ListingController extends Controller
             'description' => 'required'
         ]);
 
+        if ($request->hasFile('logo')) {
+            $validateData['logo'] = $request->file('logo')->store('logos', 'public');
+        }
+
 
         $validateData['user_id'] = auth()->id();
 
