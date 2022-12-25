@@ -49,4 +49,11 @@ class ListingController extends Controller
         
         return redirect('/')->with('message', 'Listing created successfully.');
     }
+
+    // Manage listings
+    public function manage () {
+        return view('listings.manage', [
+            'listings' => auth()->user()->listings()->get()
+        ]);
+    }
 }

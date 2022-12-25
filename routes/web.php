@@ -20,6 +20,7 @@ Route::get('/', [ListingController::class, 'index']);
 Route::get('/listings/create', [ListingController::class, 'create'])->middleware('auth');
 Route::post('/listings/store', [ListingController::class, 'store'])->middleware('auth');
 Route::get('/{listing}', [ListingController::class, 'show'])->middleware('auth');
+Route::get('/listings/manage', [ListingController::class, 'manage'])->middleware('auth');
 
 // Users
 Route::get('/users/register', [UserController::class, 'create'])->middleware('guest');
